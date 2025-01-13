@@ -1,0 +1,98 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f4f4f4;
+            text-align: left;
+        }
+        tr:hover{
+            background-color: #ccc;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <div class="topnav">
+        <a class="active" href="/">Home</a>
+        <a href="/create">Create User</a>
+    </div>
+
+    <h1>Dữ liệu từ Database</h1>
+        <table border="1px">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên</th>
+                    <th>Email</th>
+                    <th>Địa chỉ</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.forEach(item=> { %>
+                    <tr>
+                        <td>
+                            <%= item.id %>
+                        </td>
+                        <td>
+                            <%= item.name %>
+                        </td>
+                        <td>
+                            <%= item.email %>
+                        </td>
+                        <td>
+                            <%= item.city %>
+                        </td>
+                        <td>
+                            <a href="/update/<%= item.id %>">Edit</a>
+                            <form action="/delete-user/<%= item.id %>" method="post">
+                                <button>Delete</button>
+                            </form>
+                            
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+
+        <!-- <div class="form-add-new">
+        <form action="/create_user" method="post">
+            <fieldset>
+                <legend>Add new users</legend>
+
+                <div class="input-group">
+                    <label>Email: </label>
+                    <input type="text" name="email">
+                </div>
+                <div class="input-group">
+                    <label>Name: </label>
+                    <input type="text" name="myname">
+                </div>
+                <div class="input-group">
+                    <label>City: </label>
+                    <input type="text" name="city">
+                </div>
+                <div>
+                    <button>Save</button>
+                </div>
+            </fieldset>
+        </form>
+    </div> -->
+</body>
+
+</html>
